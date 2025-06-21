@@ -23,7 +23,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const conn= await dbConnect();
+  const conn = await dbConnect();
   if (!conn) {
     console.error("Failed to connect to the database");
   }

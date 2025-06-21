@@ -8,7 +8,7 @@ import { doCredentialsLogin } from '@/app/actions';
 
 const LoginForm = () => {
  const router = useRouter();
-    const [error, setError] = useState("");
+  const [error, setError] = useState("");
 
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -49,12 +49,7 @@ const LoginForm = () => {
             Enter your email and password to sign in!
           </p>
           <SocialLogin />
-          <div className="relative my-4">
-            <div className="relative flex items-center py-1">
-              <div className="grow border-t border-zinc-800"></div>
-              <div className="grow border-t border-zinc-800"></div>
-            </div>
-          </div>
+    
           <div>
 
             {error && (
@@ -95,7 +90,7 @@ const LoginForm = () => {
                 </div>
 
                 <button
-                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-300 text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-4 items-center justify-center rounded-lg px-4 py-2 text-base font-medium"
+                  className="cursor-pointer  bg-yellow-300 text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-4 items-center justify-center rounded-lg px-4 py-2 text-base font-medium"
                   type="submit"
                 >
                  <IconLogin2 stroke={1} /> Sign in
