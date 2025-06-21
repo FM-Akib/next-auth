@@ -68,7 +68,7 @@ const LoginForm = () => {
                   <label className="text-white" htmlFor="email">Email</label>
                  
                   <input
-                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    className="mr-2.5 mb-2 h-full min-h-[30px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-2 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     id="email"
                     placeholder="name@example.com"
                     type="email"
@@ -89,13 +89,13 @@ const LoginForm = () => {
                     placeholder="Password"
                     type="password"
                     autoComplete="current-password"
-                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    className="mr-2.5 mb-2 h-full min-h-[30px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-2 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     name="password"
                   />
                 </div>
 
                 <button
-                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-6 items-center justify-center rounded-lg px-4 py-4 text-base font-medium"
+                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-300 text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-4 items-center justify-center rounded-lg px-4 py-2 text-base font-medium"
                   type="submit"
                 >
                  <IconLogin2 stroke={1} /> Sign in
@@ -111,13 +111,7 @@ const LoginForm = () => {
                 >Forgot your password?</a
               >
             </p>
-            <p>
-              <a
-                href="/dashboard/signin/email_signin"
-                className="font-medium text-white text-sm"
-                >Sign in via magic link</a
-              >
-            </p>
+  
             <p>
               <Link
                 href="/register"

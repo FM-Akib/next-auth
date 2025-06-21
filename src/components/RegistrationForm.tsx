@@ -53,11 +53,11 @@ const RegistrationForm = () => {
         >
           <p className="text-[32px] font-bold text-white">Register</p>
           <p className="mb-2.5 mt-2.5 font-normal text-zinc-400">
-        Enter your Name, Email, Password to!
+        Enter your Name, Email, Password to Register!
           </p>
 
 
-          <div className="relative my-2">
+          <div className="relative my-1">
             <div className="relative flex items-center py-1">
               <div className="grow border-t border-zinc-800"></div>
               <div className="grow border-t border-zinc-800"></div>
@@ -67,12 +67,12 @@ const RegistrationForm = () => {
 
 
             <form onSubmit={handleSubmit}  className="mb-4">
-              <div className="grid gap-2">
+              <div className="grid gap-1">
                 <div className="grid gap-1">
 
                   <label className="text-white" htmlFor="name">Name</label>
                   <input
-                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    className="mr-2.5 mb-2 h-full min-h-[30px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-2 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     id="name"
                     placeholder="Akkas Ali"
                     type="text"
@@ -84,7 +84,7 @@ const RegistrationForm = () => {
 
                   <label className="text-white" htmlFor="email">Email</label>
                   <input
-                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    className="mr-2.5 mb-2 h-full min-h-[30px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-2 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     id="email"
                     placeholder="name@example.com"
                     type="email"
@@ -104,13 +104,13 @@ const RegistrationForm = () => {
                     placeholder="Password"
                     type="password"
                     autoComplete="current-password"
-                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    className="mr-2.5 mb-2 h-full min-h-[30px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-2 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     name="password"
                   />
                 </div>
 
                 <button
-                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-6 items-center justify-center rounded-lg px-4 py-3 text-base font-medium"
+                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-300 text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-4 items-center justify-center rounded-lg px-4 py-2 text-base font-medium"
                   type="submit"
                 >
                  <IconLogin2 stroke={1} /> Register
