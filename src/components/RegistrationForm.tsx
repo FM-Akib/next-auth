@@ -1,32 +1,39 @@
 "use client";
-import { useRouter } from 'next/navigation';
-import { IconArrowNarrowLeft,  IconLogin2 } from '@tabler/icons-react';
+import { IconArrowNarrowLeft, IconLogin2 } from '@tabler/icons-react';
 import Link from 'next/link';
-import React, { useState } from 'react';
+import React from 'react';
 import SocialLogin from './SocialLogin';
-import { doCredentialsLogin } from '@/app/actions';
+import { useRouter } from 'next/navigation';
 
-const LoginForm = () => {
- const router = useRouter();
-    const [error, setError] = useState("");
-
-
+const RegistrationForm = () => {
+  const router = useRouter();
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    try{
+     try{
       const formData = new FormData(event.currentTarget);
-      const response = await doCredentialsLogin(formData);
-           if (!!response.error) {
-                console.error(response.error);
-                setError(response.error.message);
-            } else {
-                router.push("/dashboard");
-            }
-    }
-    catch (error) {
-      console.error('Error during login:', error);
-      setError("Login failed. Please check your credentials.");
-    }
+      const name = formData.get('name') as string;
+      const email = formData.get('email') as string;
+      const password = formData.get('password') as string;
+
+      // Send the data to the server
+      const response = await fetch('/api/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      if (response.status !== 201) {
+       router.push('/');
+      }
+
+      const data = await response.json();
+      console.log(data.message); // Handle success message
+     }catch (error) {
+      console.error('Error during registration:', error);
+      // Handle error (e.g., show an error message to the user)
+     }
   }
     return (
      <div
@@ -44,12 +51,13 @@ const LoginForm = () => {
         <div
           className="my-auto mb-auto mt-8 flex flex-col md:mt-[70px] w-[350px] max-w-[450px] mx-auto md:max-w-[450px] lg:mt-[30px] lg:max-w-[450px]"
         >
-          <p className="text-[32px] font-bold text-white">Sign In</p>
+          <p className="text-[32px] font-bold text-white">Register</p>
           <p className="mb-2.5 mt-2.5 font-normal text-zinc-400">
-            Enter your email and password to sign in!
+        Enter your Name, Email, Password to!
           </p>
-          <SocialLogin />
-          <div className="relative my-4">
+
+
+          <div className="relative my-2">
             <div className="relative flex items-center py-1">
               <div className="grow border-t border-zinc-800"></div>
               <div className="grow border-t border-zinc-800"></div>
@@ -57,16 +65,24 @@ const LoginForm = () => {
           </div>
           <div>
 
-            {error && (
-              <div className="mb-4 text-red-500">
-                {error}
-              </div>
-            )}
-            <form onSubmit={handleSubmit} className="mb-4">
+
+            <form onSubmit={handleSubmit}  className="mb-4">
               <div className="grid gap-2">
                 <div className="grid gap-1">
+
+                  <label className="text-white" htmlFor="name">Name</label>
+                  <input
+                    className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
+                    id="name"
+                    placeholder="Akkas Ali"
+                    type="text"
+                    autoCapitalize="none"
+                    autoCorrect="off"
+                    name="name"
+                  />
+
+
                   <label className="text-white" htmlFor="email">Email</label>
-                 
                   <input
                     className="mr-2.5 mb-2 h-full min-h-[44px] w-full rounded-lg border bg-zinc-950 text-white border-zinc-800 px-4 py-3 text-sm font-medium placeholder:text-zinc-400 focus:outline-0 dark:border-zinc-800 dark:bg-transparent dark:text-white dark:placeholder:text-zinc-400"
                     id="email"
@@ -83,7 +99,6 @@ const LoginForm = () => {
                     htmlFor="password"
                     >Password
                     </label>
-                   
                     <input
                     id="password"
                     placeholder="Password"
@@ -95,15 +110,15 @@ const LoginForm = () => {
                 </div>
 
                 <button
-                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-6 items-center justify-center rounded-lg px-4 py-4 text-base font-medium"
+                  className="whitespace-nowrap ring-offset-background transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-white text-zinc-950 hover:bg-white/90 active:bg-white/80 flex w-full max-w-full mt-6 items-center justify-center rounded-lg px-4 py-3 text-base font-medium"
                   type="submit"
                 >
-                 <IconLogin2 stroke={1} /> Sign in
+                 <IconLogin2 stroke={1} /> Register
                 </button>
 
               </div>
             </form>
-
+            <SocialLogin />
             <p>
               <a
                 href="/dashboard/signin/forgot_password"
@@ -111,18 +126,12 @@ const LoginForm = () => {
                 >Forgot your password?</a
               >
             </p>
-            <p>
-              <a
-                href="/dashboard/signin/email_signin"
-                className="font-medium text-white text-sm"
-                >Sign in via magic link</a
-              >
-            </p>
+          
             <p>
               <Link
-                href="/register"
+                href="/"
                 className="font-medium text-white text-sm"
-                >Don&apos;t have an account? Sign up</Link>
+                >Already have an account? Sign up</Link>
             </p>
           </div>
         </div>
@@ -132,4 +141,4 @@ const LoginForm = () => {
     );
 };
 
-export default LoginForm;
+export default RegistrationForm;
