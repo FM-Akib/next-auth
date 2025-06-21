@@ -9,8 +9,10 @@ interface PageProps {
   };
 }
 
-const page = ({ params }: PageProps) => {
-  const product = mockProducts.find((p) => p.id === parseInt(params.id));
+const page = async ({ params }: PageProps) => {
+  const { id } = await params;
+  const productId = Number.parseInt(id);
+  const product = mockProducts.find((p) => p.id === productId);
   if (!product) {
     notFound();
   }
@@ -50,12 +52,12 @@ const page = ({ params }: PageProps) => {
                 Product Details
               </h2>
               <p className="text-gray-700 mb-6">{product.details}</p>
-              <button
-                className="bg-emerald-700 text-white px-6 py-3 rounded-md hover:bg-emerald-800 transition-colors duration-200 font-medium"
-                disabled
+              <Link
+                href={`/products/${product.id}/checkout`}
+                className="bg-emerald-700 text-white px-6 py-3 rounded-md hover:bg-emerald-800 transition-colors duration-200 font-medium inline-block"
               >
-                Add to Cart (Coming Soon)
-              </button>
+                Proceed to Checkout
+              </Link>
             </div>
           </div>
         </div>

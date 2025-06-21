@@ -17,6 +17,24 @@ export default async function Navbar() {
             </Link>
           </div>
 
+          <div className="">
+            {/* Navigation Links */}
+            <div className=" md:flex space-x-4">
+              <Link
+                href="/products"
+                className="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                Products
+              </Link>
+              <Link
+                href="/about"
+                className="text-gray-300 hover:text-yellow-300 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200"
+              >
+                About
+              </Link>
+            </div>
+          </div>
+
           {/* Navigation Links */}
           <div className="flex items-center space-x-4">
             {session?.user ? (
